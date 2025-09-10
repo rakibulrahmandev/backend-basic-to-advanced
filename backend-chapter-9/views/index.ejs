@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-gray-950 pt-5 px-4">
+      <form action="/create" method="post" class="space-y-4">
+        <input class="w-full p-4 border-none outline-none text-white rounded-sm bg-gray-900" autocomplete="off" type="text" name="title" placeholder="Title goes here ...">
+        <textarea class="w-full p-4 border-none outline-none text-white rounded-sm bg-gray-900 resize-none" placeholder="Write tasks here ..." name="details"></textarea>
+        <input class="px-4 py-3 text-white bg-emerald-600 rounded-sm cursor-pointer" type="submit" value="Create tasks">
+      </form>
+      <div class="w-full mt-10">
+        <% if (files.length > 0) { %>
+          <div class="w-full grid grid-cols-3 gap-4">
+            <% files.forEach(file => { %>
+              <div class="w-full text-white p-4 bg-gray-900 rounded-sm">
+                <h1 class="text-xl font-semibold"><%= file %></h1>
+                <div class="w-full flex items-center justify-between">
+                  <a href='/files/<%= file %>' class="text-base font-normal text-blue-600 cursor-pointer mt-4">Read more</a>
+                  <a href="/file/edit/<%= file %>" class="text-base font-normal text-gray-600 cursor-pointer mt-4">edit filename</a>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <div class="w-full">
+            <p class="text-lg text-gray-500 font-semibold">No tasks yet.</p>
+          </div>
+        <% } %>
+      </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
