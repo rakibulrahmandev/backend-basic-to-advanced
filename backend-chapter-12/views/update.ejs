@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-slate-950 flex items-center justify-center relative">
+        <div class="w-full max-w-[450px] min-h-[200px] bg-slate-900/50 rounded-md border border-gray-800 backdrop-blur-md p-5">
+            <div class="w-full">
+                <h1 class="text-white text-2xl font-semibold">Update user</h1>
+            </div>
+            <div class="w-full mt-10">
+                <form action="/update/<%= user?._id %>" method="post" class="space-y-5">
+                    <div class="w-full">
+                        <input type="text" placeholder="Your name" autocomplete="off" required value="<%= user?.name %>" class="w-full py-3 px-4 border border-gray-800 outline-none focus:outline-none text-white text-base font-normal rounded-md placeholder:text-gray-700" name="name">
+                    </div>
+                    <div class="w-full">
+                        <input type="email" placeholder="Email address" autocomplete="off" required value="<%= user?.email %>" class="w-full py-3 px-4 border border-gray-800 outline-none focus:outline-none text-white text-base font-normal rounded-md placeholder:text-gray-700" name="email">
+                    </div>
+                    <div class="w-full">
+                        <input type="text" placeholder="Image URL" autocomplete="off" required value="<%= user?.image %>" class="w-full py-3 px-4 border border-gray-800 outline-none focus:outline-none text-white text-base font-normal rounded-md placeholder:text-gray-700" name="image">
+                    </div>
+                    <div class="w-full flex items-center justify-end">
+                        <button type="submit" class="py-3 px-6 bg-yellow-500 text-white text-base font-medium rounded-sm cursor-pointer">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="inline-block absolute top-[25px] left-[25px]">
+            <a href="/read" class="text-blue-600 text-base font-medium">Read Users</a>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
