@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-slate-950 px-10 text-white">
+        <div class="w-full flex items-center justify-between">
+            <div class="w-auto pt-10">
+                <h1 class="text-3xl font-light">Hello, <span class="font-semibold"><%= user?.name %></span>👋🏻</h1>
+                <p class="text-base font-light mt-1">Now you can create post.</p>
+            </div>
+            <div class="w-auto pt-10">
+                <a href="/sign_out" class="text-base text-white font-medium bg-red-500 py-3 px-4 rounded-md">Sign Out</a>
+            </div>
+        </div>
+        <div class="w-full max-w-[500px] mt-4">
+            <form action="/post" method="post" class="w-full space-y-2">
+                <div class="w-full">
+                    <textarea name="content" placeholder="What's your mind today?" required autocomplete="off" class="w-full max-w-[500px] min-h-[150px] resize-none border border-gray-500/20 outline-none p-4 rounded-md text-white text-base placeholder:text-white/20"></textarea>
+                </div>
+                <div class="w-full">
+                    <button class="py-3 px-7 bg-emerald-600 text-base text-white rounded-md cursor-pointer">Create post</button>
+                </div>
+            </form>
+        </div>
+        <div class="w-full border border-gray-700/30 my-8"></div>
+        <div class="w-full mb-7">
+            <h2 class="text-2xl font-semibold">Your posts:</h2>
+        </div>
+        <% if (user?.posts.length === 0) { %>
+            <div class="w-full text-center">
+                <h2 class="text-base text-gray-700 font-medium">No post available yet!</h2>
+            </div>
+        <% } else { %>
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <% user?.posts.reverse().forEach(post => { %>
+                    <div class="w-full min-h-[150px] bg-slate-950 border border-gray-500/20 rounded-md p-4">
+                        <div class="w-full">
+                            <p class="text-base text-blue-600 font-normal">@<%= user?.username %></p>
+                            <div class="w-full mt-4 min-h-[20px]">
+                                <p class="text-base font-normal"><%= post?.content %></p>
+                            </div>
+                        </div>
+                        <div class="w-full flex items-center justify-end mt-4">
+                            <div class="w-auto space-x-2">
+                                <a href="#" class="text-base font-normal text-blue-500">Like</a>
+                                <a href="#" class="text-base font-normal text-white/20">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
