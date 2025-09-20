@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-slate-950 px-10 text-white">
+        <div class="w-full flex items-center justify-between">
+            <div class="w-auto pt-10">
+                <h1 class="text-3xl font-semibold">Edit Your Post</h1>
+                <p class="text-base font-light mt-1">Now you can edit post.</p>
+            </div>
+        </div>
+        <div class="w-full max-w-[500px] mt-4">
+            <form action="/edit/<%= post?._id %>" method="post" class="w-full space-y-2">
+                <div class="w-full">
+                    <textarea name="content" placeholder="What's your mind today?" required autocomplete="off" class="w-full max-w-[500px] min-h-[150px] resize-none border border-gray-500/20 outline-none p-4 rounded-md text-white text-base placeholder:text-white/20"><%= post?.content %></textarea>
+                </div>
+                <div class="w-full">
+                    <button class="py-3 px-7 bg-yellow-600 text-base text-white rounded-md cursor-pointer">Update post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
